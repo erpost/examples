@@ -1,8 +1,15 @@
----
+resources:
+- name: repo
+  type: git
+  source:
+  uri: https://github.com/erpost/examples.git
+
 jobs:
 - name: job
   public: true
   plan:
+  - get: repo
+    trigger: true
   - task: simple-task
     config:
       platform: linux
